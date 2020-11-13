@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}Welcome to my Django Web App{% endblock %}
+
+{% block content %}
+    <h2>Welcome to my Django Web App</h2>
+    <p>Please log in or Sign Up for an Account</p>
+    <a href="{% url 'login' %}">Log In</a>
+    <a href="{% url 'signup' %}">Sign Up</a>
+{% endblock %}
+
