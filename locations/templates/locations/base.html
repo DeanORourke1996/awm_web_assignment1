@@ -30,7 +30,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
             integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
             crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="{% static 'world/main.css' %}">
 
     {% if title %}
         <title>WebMap {{ title }}</title>
@@ -42,19 +41,15 @@
     <header class="site-header">
       <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
         <div class="container">
-          <a href="{% url 'world-home' %}"><img class="rounded-circle article-img" src="{% static '/images/globe-icon.png' %}"></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarToggle">
             <div class="navbar-nav mr-auto">
-              <a class="nav-item nav-link" href="{% url 'world-home' %}">Home</a>
-              <a class="nav-item nav-link" href="{% url 'world-countries' %}">Countries</a>
             </div>
             <!-- Navbar Right Side -->
              <div class="navbar-nav">
               {% if user.is_authenticated %}
-                <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
                 <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
               {% else %}
                 <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
@@ -62,7 +57,6 @@
               {% endif %}
             </div>
           </div>
-        </div>
       </nav>
     </header>
     <main >

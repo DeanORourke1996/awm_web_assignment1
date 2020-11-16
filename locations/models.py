@@ -23,4 +23,4 @@ class WorldBorder(models.Model):
 
     # Returns the string representation of the model.
     def __str__(self):
-        return self.
+        return self.name
