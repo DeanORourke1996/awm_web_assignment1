@@ -18,21 +18,16 @@ import socket
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.1/howto/static-files/
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATIC_URL = '/static/'
-
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'theyth%^819thebsjs!skfjiojdfijcdijn98219832'
-
+key = Path('secretkey.txt').read_text()
+SECRET_KEY = key
 
 DEBUG = True
+
+ALLOWED_HOSTS = []
 
 # Application definition
 INSTALLED_APPS = [
@@ -143,6 +138,15 @@ USE_TZ = True
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/3.1/howto/static-files/
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_URL = '/static/'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+CRISPY_FAIL_SILENTLY = not DEBUG
 
 if socket.gethostname() == "Deans-MacBook-Pro.local":
     DATABASES["default"]["HOST"] = "localhost"
