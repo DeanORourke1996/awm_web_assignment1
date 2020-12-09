@@ -1,4 +1,5 @@
 from .forms import UserRegisterForm
+from .forms import UserLoginForm
 from django.contrib import messages
 from django.shortcuts import render, redirect
 
@@ -15,3 +16,16 @@ def register(request):
         else:
             form = UserRegisterForm()
         return render(request, 'accounts/register.html', {'form': form})
+
+
+def login(request):
+    if request.method == 'POST':
+        form = UserLoginForm(request.POST)
+        if form.is_valid():
+            form.save()
+            email = form.cleaned_data.get('email')
+            messages.success(request, f'Signed in successfully, Welcome')
+            return redirect('home')
+        else:
+            return redirect('login/error')
+        return render(request, 'accounts/')

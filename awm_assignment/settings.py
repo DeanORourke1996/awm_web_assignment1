@@ -22,8 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-key = Path('secretkey.txt').read_text()
-SECRET_KEY = key
+SECRET_KEY = [BASE_DIR / "secret_key.txt"]
 
 DEBUG = True
 
@@ -40,7 +39,7 @@ INSTALLED_APPS = [
     'locations.apps.LocationsConfig',
     'crispy_forms',
     'leaflet',
-    'accounts',
+    'users',
 ]
 
 # Configuration for LeafletJS
@@ -70,7 +69,7 @@ ROOT_URLCONF = 'awm_assignment.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [BASE_DIR / 'users/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
