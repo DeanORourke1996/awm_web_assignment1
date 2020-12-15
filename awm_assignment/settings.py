@@ -37,9 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'locations.apps.LocationsConfig',
+    'django.contrib.gis',
     'crispy_forms',
     'leaflet',
-    'users',
+    'users.apps.UsersConfig',
 ]
 
 # Configuration for LeafletJS
@@ -146,15 +147,15 @@ STATIC_URL = '/static/'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 CRISPY_FAIL_SILENTLY = not DEBUG
 
-if socket.gethostname() == "Deans-MacBook-Pro.local":
-    DATABASES["default"]["HOST"] = "localhost"
-    DATABASES["default"]["PORT"] = 25432
-    DEBUG = True
-    TEMPLATES[0]["OPTIONS"]["debug"] = True
-    ALLOWED_HOSTS = ['*', ]
-else:
-    DATABASES["default"]["HOST"] = "webmapinternal"
-    DATABASES["default"]["PORT"] = 5432
-    DEBUG = False
-    TEMPLATES[0]["OPTIONS"]["debug"] = False
-    ALLOWED_HOSTS = ['.deanorourke.xyz', 'localhost', ]
+# if socket.gethostname() == "Deans-MacBook-Pro.local":
+#     DATABASES["default"]["HOST"] = "localhost"
+#     DATABASES["default"]["PORT"] = 25432
+#     DEBUG = True
+#     TEMPLATES[0]["OPTIONS"]["debug"] = True
+#     ALLOWED_HOSTS = ['*', ]
+# else:
+#     DATABASES["default"]["HOST"] = "webmapinternal"
+#     DATABASES["default"]["PORT"] = 5432
+#     DEBUG = False
+#     TEMPLATES[0]["OPTIONS"]["debug"] = False
+#     ALLOWED_HOSTS = ['.deanorourke.xyz', 'localhost', ]
