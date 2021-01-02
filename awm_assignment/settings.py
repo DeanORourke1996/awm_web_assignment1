@@ -22,7 +22,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = [BASE_DIR / "secret_key.txt"]
+key = Path('secretkey.txt').read_text()
+SECRET_KEY = key
 
 DEBUG = True
 
@@ -42,6 +43,9 @@ INSTALLED_APPS = [
     'leaflet',
     'users.apps.UsersConfig',
 ]
+
+SESSION_COOKIE_AGE = 180
+
 
 # Configuration for LeafletJS
 LEAFLET_CONFIG = {
@@ -147,15 +151,15 @@ STATIC_URL = '/static/'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 CRISPY_FAIL_SILENTLY = not DEBUG
 
-# if socket.gethostname() == "Deans-MacBook-Pro.local":
-#     DATABASES["default"]["HOST"] = "localhost"
-#     DATABASES["default"]["PORT"] = 25432
-#     DEBUG = True
-#     TEMPLATES[0]["OPTIONS"]["debug"] = True
-#     ALLOWED_HOSTS = ['*', ]
-# else:
-#     DATABASES["default"]["HOST"] = "webmapinternal"
-#     DATABASES["default"]["PORT"] = 5432
-#     DEBUG = False
-#     TEMPLATES[0]["OPTIONS"]["debug"] = False
-#     ALLOWED_HOSTS = ['.deanorourke.xyz', 'localhost', ]
+if socket.gethostname() == "Deans-MacBook-Pro.local":
+    DATABASES["default"]["HOST"] = "localhost"
+    DATABASES["default"]["PORT"] = 25432
+    DEBUG = True
+    TEMPLATES[0]["OPTIONS"]["debug"] = True
+    ALLOWED_HOSTS = ['*', ]
+else:
+    DATABASES["default"]["HOST"] = "webmapinternal"
+    DATABASES["default"]["PORT"] = 5432
+    DEBUG = False
+    TEMPLATES[0]["OPTIONS"]["debug"] = False
+    ALLOWED_HOSTS = ['.deanorourke.xyz', 'localhost']
