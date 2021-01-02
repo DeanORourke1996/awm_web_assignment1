@@ -9,6 +9,10 @@ def index(response, _id):
     return render(response, "locations/base.html", {})
 
 
+def countries(response):
+    return render(response, "locations/countries.html", {})
+
+
 def home(response):
     return render(response, "locations/home.html", {})
 
