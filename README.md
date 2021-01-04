@@ -1,7 +1,4 @@
 # awm_web_assignment1
-Assignment 1
-
-Web Application works locally as intended. 
 
 HTML5, CSS and Bootstrap4. 
 Middle Tier: Django. 
